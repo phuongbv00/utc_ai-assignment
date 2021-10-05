@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-public class DFS4BnR extends BFS4BnR {
+public class DepthFistSearchBnR extends BreadthFirstSearchBnR {
     @Override
     public void solve(BnR startState, BnR targetState) {
         Deque<BnR> L = new LinkedList<>();
@@ -32,7 +32,7 @@ public class DFS4BnR extends BFS4BnR {
     }
 
     public static void main(String[] args) {
-        var algorithm = new DFS4BnR();
+        var algorithm = new DepthFistSearchBnR();
         algorithm.solve(new BnR(3, 3, 1), new BnR(0, 0, 0));
         System.out.println(algorithm.getResult());
     }

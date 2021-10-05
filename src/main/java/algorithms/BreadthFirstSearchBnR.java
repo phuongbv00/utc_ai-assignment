@@ -5,7 +5,7 @@ import models.BnR;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class BFS4BnR {
+public class BreadthFirstSearchBnR {
     protected BnR result;
 
     public String getResult() {
@@ -44,7 +44,7 @@ public class BFS4BnR {
     }
 
     public static void main(String[] args) {
-        var algorithm = new BFS4BnR();
+        var algorithm = new BreadthFirstSearchBnR();
         algorithm.solve(new BnR(3, 3, 1), new BnR(0, 0, 0));
         System.out.println(algorithm.getResult());
     }
