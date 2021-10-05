@@ -5,34 +5,18 @@ import models.BnR;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class BreadthFirstSearchBnR {
-    protected BnR result;
-
-    // Mỗi khi sinh trạng thái kề thì parent của nó chính là trạng thái gốc
-    // -> truy vết ngược theo parent để tìm đường đi
-    public String getResult() {
-        var rsList = new ArrayList<>(List.of(result));
-        var root = result;
-        while (root != null) {
-            root = root.getParent();
-            rsList.add(root);
-        }
-        return rsList
-                .stream()
-                .filter(Objects::nonNull)
-                .map(BnR::toString)
-                .collect(Collectors.joining(" <- "));
-    }
-
+public class BestFirstSearchBnR extends BreadthFirstSearchBnR {
+    @Override
     public void solve(BnR startState, BnR targetState) {
-        // Tạo queue L
-        Queue<BnR> L = new LinkedList<>();
+        // Khởi tạo queue L với luật tăng dần theo hàm đánh giá f = số tỉ phú + số tên cướp ở bờ tả
+        Comparator<BnR> comparator = Comparator
+                .comparingInt(state -> state.getBillionaires() + state.getRobbers());
+        Queue<BnR> L = new PriorityQueue<>(comparator);
 
-        // Tạo map Q để loại bỏ trạng thái lặp
+        // Khởi tạo map Q để sàng lọc các trạng thái lặp
         Map<String, Boolean> Q = new HashMap<>();
         L.add(startState);
         while (true) {
-            // Xét trạng thái đầu queue L
             var currentState = L.poll();
             assert currentState != null;
             if (currentState.equals(targetState)) {
@@ -51,7 +35,7 @@ public class BreadthFirstSearchBnR {
     }
 
     public static void main(String[] args) {
-        var algorithm = new BreadthFirstSearchBnR();
+        var algorithm = new BestFirstSearchBnR();
         algorithm.solve(new BnR(3, 3, 1), new BnR(0, 0, 0));
         System.out.println(algorithm.getResult());
     }
