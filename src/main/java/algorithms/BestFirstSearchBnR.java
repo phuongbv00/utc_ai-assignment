@@ -5,7 +5,7 @@ import models.BnR;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class BestFirstSearchBnR extends BreadthFirstSearchBnR {
+public class BestFirstSearchBnR extends SearchBnR {
     @Override
     public void solve(BnR startState, BnR targetState) {
         // Khởi tạo queue L với luật tăng dần theo hàm đánh giá f = số tỉ phú + số tên cướp ở bờ tả

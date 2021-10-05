@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-public class DepthFistSearchBnR extends BreadthFirstSearchBnR {
+public class DepthFistSearchBnR extends SearchBnR {
     @Override
     public void solve(BnR startState, BnR targetState) {
         // Tạo stack L (trong java thì dùng deque)
