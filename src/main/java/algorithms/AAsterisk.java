@@ -1,9 +1,6 @@
 package algorithms;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import models.Node;
 import models.Point;
 
@@ -97,7 +94,8 @@ public class AAsterisk {
             // Đưa các điểm kề với điểm được xét vào queue L
             var childrenNodes = currentNode.getChildren()
                     .stream()
-                    .map(n -> n.clone(new TypeReference<Node<Point>>() {}))
+                    .map(n -> n.clone(new TypeReference<Node<Point>>() {
+                    }))
                     .peek(n -> {
                         // Tính toán k, h, g, f
                         var k = kMap.get(currentNodeLabel + n.getData().getLabel());
