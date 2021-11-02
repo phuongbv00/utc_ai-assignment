@@ -10,12 +10,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
+/**
+ * Tuyển mệnh đề
+ */
+
 @Getter
 public class DisjunctionProposition {
-    // Biểu diễn dạng thô của công thức
+    // Biểu diễn dạng thô của mệnh đề
     private final String raw;
 
-    // Biểu diễn các mệnh đề của công thức về dạng bảng băm
+    // Biểu diễn các mệnh đề con về dạng bảng băm
     // key: mệnh đề
     // value: true ~ khẳng định, false ~ phủ định
     private Map<String, Boolean> propositionsMap = new HashMap<>();
